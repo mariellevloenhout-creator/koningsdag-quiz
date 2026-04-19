@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="nl"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;title&gt;Koningsdag Quiz HOST&lt;/title&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1">body{</p>
+<p class="p1">margin:0;</p>
+<p class="p1">font-family:Arial;</p>
+<p class="p1">background:linear-gradient(135deg,#ff6a00,#ffb347);</p>
+<p class="p1">color:white;</p>
+<p class="p1">text-align:center;</p>
+<p class="p1">}</p>
+<p class="p1">h1{font-size:40px;}</p>
+<p class="p1">.question{font-size:3vw;margin:20px;}</p>
+<p class="p1">.timer{font-size:6vw;margin:20px;}</p>
+<p class="p1">button{</p>
+<p class="p1">font-size:18px;</p>
+<p class="p1">margin:10px;</p>
+<p class="p1">padding:12px 20px;</p>
+<p class="p1">border:none;</p>
+<p class="p1">border-radius:10px;</p>
+<p class="p1">cursor:pointer;</p>
+<p class="p1">}</p>
+<p class="p1">.score{</p>
+<p class="p1">font-size:28px;</p>
+<p class="p1">margin-top:20px;</p>
+<p class="p1">}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h1&gt;👑 Koningsdag Quiz HOST&lt;/h1&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="question" id="q"&gt;Klik op START&lt;/div&gt;</p>
+<p class="p1">&lt;div class="timer" id="t"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;button onclick="next()"&gt;Volgende vraag&lt;/button&gt;</p>
+<p class="p1">&lt;button onclick="aPlus()"&gt;Team A +1&lt;/button&gt;</p>
+<p class="p1">&lt;button onclick="bPlus()"&gt;Team B +1&lt;/button&gt;</p>
+<p class="p1">&lt;button onclick="show()"&gt;Toon antwoord&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="score"&gt;</p>
+<p class="p1">Team A: &lt;span id="a"&gt;0&lt;/span&gt; |</p>
+<p class="p1">Team B: &lt;span id="b"&gt;0&lt;/span&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">const quiz=[</p>
+<p class="p1">{q:"Hoe oud werd Willem-Alexander in 2026?",a:"57"},</p>
+<p class="p1">{q:"Typisch Koningsdag eten?",a:"Tompouce"},</p>
+<p class="p1">{q:"Kleur van de dag?",a:"Oranje"},</p>
+<p class="p1">{q:"Kinderen op vrijmarkt doen?",a:"Spelen"},</p>
+<p class="p1">{q:"Grootste chaos factor?",a:"Peuters"}</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">let i=-1;</p>
+<p class="p1">let a=0,b=0;</p>
+<p class="p1">let time=60;</p>
+<p class="p1">let timer;</p>
+<p class="p2"><br></p>
+<p class="p1">function next(){</p>
+<p class="p1">clearInterval(timer);</p>
+<p class="p1">i++;</p>
+<p class="p1">if(i&gt;=quiz.length){</p>
+<p class="p1">document.getElementById("q").innerText="🎉 Einde quiz!";</p>
+<p class="p1">return;</p>
+<p class="p1">}</p>
+<p class="p1">document.getElementById("q").innerText=quiz[i].q;</p>
+<p class="p1">time=60;</p>
+<p class="p1">document.getElementById("t").innerText=time;</p>
+<p class="p2"><br></p>
+<p class="p1">timer=setInterval(()=&gt;{</p>
+<p class="p1">time--;</p>
+<p class="p1">document.getElementById("t").innerText=time;</p>
+<p class="p1">if(time&lt;=0)clearInterval(timer);</p>
+<p class="p1">},1000);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function show(){</p>
+<p class="p1">alert("Antwoord: "+quiz[i].a);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function aPlus(){</p>
+<p class="p1">a++;</p>
+<p class="p1">document.getElementById("a").innerText=a;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function bPlus(){</p>
+<p class="p1">b++;</p>
+<p class="p1">document.getElementById("b").innerText=b;</p>
+<p class="p1">}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
